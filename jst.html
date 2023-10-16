@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Me Button</title>
+    <style>
+        .text {
+            color: cornflowerblue;
+        }
+
+        .second {
+            color: goldenrod
+        }
+    </style>
+</head>
+
+<body>
+<button id="myButton">Click Me!</button>
+<p id="myText">Hello, </p>
+<p id="secondText">Kazakhstan</p>
+
+<script>
+    document.getElementById("myButton").addEventListener("click", function () {
+        var textElement = document.getElementById("myText");
+        var textSecond = document.getElementById("secondText");
+
+        // Check if the text element exists
+        if (textElement && textSecond) {
+            textElement.classList.add("text");
+            textSecond.classList.add("second");
+        } else {
+            alert("Text element not found!");
+        }
+    });
+</script>
+</body>
+
+</html>
