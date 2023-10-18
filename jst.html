@@ -8,11 +8,15 @@
 </head>
 
 <body>
+
 <div>hello</div>
+<div class="dashboard">
+    <h3>Dashboard</h3>
+</div>
 <div class="class_name" id="id_number">
-    <p class="first">               first</p>
+    <p class="first"> first</p>
     <p class="second">second</p>
-    <p class="third">       third    </p>
+    <p class="third"> third </p>
 </div>
 
 
@@ -33,13 +37,26 @@
     test2.classList.add('qwe') //add  class
     test2.classList.remove('first') //add  class
     test2.classList.toggle('first') //add class if, don't have else remove
-    test2.classList.replace('first','second') // replaced
+    test2.classList.replace('first', 'second') // replaced
 
 
     let issetClass = test2.classList.contains('second') //search class if, have true else false to type boolean
 
+let dashboard = document.querySelector('.dashboard');
+    console.log(test2.attributes)
+    let h3 = document.createElement('h3'); //create new tag
 
-    console.log()
+    let body = document.body;
+    // body.appendChild(h3); //add element to body to end
+    body.appendChild(h3); //add element to body to end
+    body.prepend( h3); //add element to body to begin
+    body.append('234'); //add element to body in text
+    h3.textContent = 'new element';
+    console.log(h3)
+
+    dashboard.after(h3) // add h3 after dashboard
+    dashboard.before(h3) // add h3 after dashboard
+
 
 </script>
 </body>
