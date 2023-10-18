@@ -24,7 +24,8 @@
     <p class="hi2">hello word2</p>
 </div>
 
-
+<input type="text">
+<button type="button">Send</button>
 <script>
     /*let test = document.getElementById('id_number')
     console.log(test.textContent); //читает все пробелы и отступы и не читает теги будем работать с ним
@@ -63,23 +64,46 @@
     // dashboard.before(h3) // add h3 after dashboard
 
 
-    let box = document.querySelector('#box');
-    let hello = document.querySelector('.hi');
+    // let box = document.querySelector('#box');
+    // let hello = document.querySelector('.hi');
 
     // box.removeChild(hello);//delete child class
     // hello.remove() // delete element
 
-    console.log(box.children); // get box children
+    // console.log(box.children); // get box children
+    //
+    // console.log(box.childNodes)
+    //
+    // console.log(box.childElementCount) // count class child
+    //
+    // console.log(hello.parentElement) //get first parent class
+    // console.log(hello.parentNode) //get first parent class
+    //
+    // console.log(hello.nextElementSibling) // get next element after hello
+    // console.log(hello.previousElementSibling) // get previous element before hello
+    let input = document.querySelector('input');
+    let h1 = document.querySelector('.dashboard');
+    let btn = document.querySelector('button')
 
-    console.log(box.childNodes)
+    // console.log(input.value) // get value list inputs
+    // console.log(input.checked); // check inputs when input type checkbox and checked
+    // console.log(input.disabled); // check inputs when input disabled
 
-    console.log(box.childElementCount) // count class child
+    // btn.onclick = () => {
+    //     alert('my function')
+    // }
+    btn.onmouseover = () => {
+        h1.style.background = 'red'
+    }
+    btn.onmouseleave = () => {
+        h1.style.background = 'transparent'
+    }
 
-    console.log(hello.parentElement) //get first parent class
-    console.log(hello.parentNode) //get first parent class
+    btn.ondblclick = () => {
+        alert('my function')
+    }
 
-    console.log(hello.nextElementSibling) // get next element after hello
-    console.log(hello.previousElementSibling) // get previous element before hello
+
 </script>
 </body>
 
