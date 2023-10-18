@@ -5,35 +5,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Click Me Button</title>
-    <style>
-        .text {
-            color: cornflowerblue;
-        }
-
-        .second {
-            color: goldenrod
-        }
-    </style>
 </head>
 
 <body>
-<button id="myButton">Click Me!</button>
-<p id="myText">Hello, </p>
-<p id="secondText">Kazakhstan</p>
+<div>hello</div>
+<div class="class_name" id="id_number">
+    <p class="first">               first</p>
+    <p class="second">second</p>
+    <p class="third">       third    </p>
+</div>
+
 
 <script>
-    document.getElementById("myButton").addEventListener("click", function () {
-        var textElement = document.getElementById("myText");
-        var textSecond = document.getElementById("secondText");
+    /*let test = document.getElementById('id_number')
+    console.log(test.textContent); //читает все пробелы и отступы и не читает теги будем работать с ним
+    console.log(test.innerText); // читает пробелы отступы и читает теги
+    console.log(test.innerHTML); // не читает пробелы отступы и теги*/
 
-        // Check if the text element exists
-        if (textElement && textSecond) {
-            textElement.classList.add("text");
-            textSecond.classList.add("second");
-        } else {
-            alert("Text element not found!");
-        }
-    });
+    let test2 = document.querySelector('p')
+    // console.log(test2.className); // получаем простой текст и выдает названия класса
+    // console.log(test2.classList); // получаем псевдомоссив какой-то с value ми
+
+    // test2.className += "_red"; //add  class
+    // test2.className = "red"; //edited  class
+
+
+    test2.classList.add('qwe') //add  class
+    test2.classList.remove('first') //add  class
+    test2.classList.toggle('first') //add class if, don't have else remove
+    test2.classList.replace('first','second') // replaced
+
+
+    let issetClass = test2.classList.contains('second') //search class if, have true else false to type boolean
+
+
+    console.log()
+
 </script>
 </body>
 
