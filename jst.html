@@ -23,6 +23,9 @@
     <p class="hi1">hello word1</p>
     <p class="hi2">hello word2</p>
 </div>
+<div class="messages">
+    <p id="message">Message from Di: <span></span></p>
+</div>
 
 <input type="text">
 <button type="button">Send</button>
@@ -85,6 +88,9 @@
     let h1 = document.querySelector('.dashboard');
     let btn = document.querySelector('button')
 
+    let agent = document.querySelector('#message');
+    let agentSpan = document.querySelector('span');
+
     // console.log(input.value) // get value list inputs
     // console.log(input.checked); // check inputs when input type checkbox and checked
     // console.log(input.disabled); // check inputs when input disabled
@@ -92,16 +98,40 @@
     // btn.onclick = () => {
     //     alert('my function')
     // }
-    btn.onmouseover = () => {
-        h1.style.background = 'red'
+    // btn.onmouseover = () => {
+    //     h1.style.background = 'red'
+    // }
+    // btn.onmouseleave = () => {
+    //     h1.style.background = 'transparent'
+    // }
+    //
+    // btn.ondblclick = () => {
+    //     alert('my function')
+    // }
+    let asd = () => {
+        console.log(false)
     }
-    btn.onmouseleave = () => {
-        h1.style.background = 'transparent'
-    }
+    btn.disabled = true
+    btn.addEventListener('click', () => {
+        asd()
+        if (input.value.length > 0) {
+            agentSpan.textContent = input.value;
+            input.value = ''
+        }
+    });
 
-    btn.ondblclick = () => {
-        alert('my function')
-    }
+
+    input.addEventListener('input', () => {
+        if (input.value.trim() !== '') {
+            btn.disabled = false
+        } else {
+            btn.disabled = true
+        }
+    })
+
+    input.addEventListener('change', (evt) => {
+        agentSpan.textContent = input.value
+    })
 
 
 </script>
