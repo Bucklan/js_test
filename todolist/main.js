@@ -20,3 +20,18 @@ let todoList = [
 ];
 
 let list = document.querySelector('.todo__list');
+
+const showList = () => {
+    todoList.forEach((item,idx) =>{
+        list.innerHTML+= '<li class="todo__item">' +
+            '                <span class="todo__item-title">'+ item.title+'</span>' +
+            '                <div class="todo__item-buttons">' +
+            '                    <button class="todo__item-button done">Done</button>' +
+            '                    <button class="todo__item-button important">Important</button>' +
+            '                    <button class="todo__item-button delete">Delete</button>' +
+            '                </div>' +
+            '            </li>'
+    })
+}
+
+showList()
