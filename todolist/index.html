@@ -1,4 +1,4 @@
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -11,11 +11,13 @@
 
 <section class="todo">
     <div class="todo__content">
-        <h1 class="todo__title">TodoList</h1>
+        <label  for="todo__input" class="todo__title">TodoList</label>
         <form class="todo__form">
-            <input placeholder="insert todo" type="text" class="todo__input" required>
+            <input id="todo__input" placeholder="insert todo" type="text" class="todo__input" required maxlength="20" minlength="5" >
             <button class="todo__button add">ADD</button>
         </form>
+
+        <h3 class="todo__empty">This is list empty</h3>
         <ul class="todo__list">
 <!--            <li class="todo__item">-->
 <!--                <span class="todo__item-title">Name Task</span>-->

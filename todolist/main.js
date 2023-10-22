@@ -14,7 +14,7 @@ let todoList = [
     {
         id: 3,
         title: 'name task 3',
-        isDone: false,
+        isDone: true,
         isImportant: false,
     },
 ];
@@ -25,7 +25,7 @@ let todoBtnDelete;
 const showList = () => {
     todoList.forEach((item, idx) => {
         list.innerHTML += `<li class="todo__item">
-                <span style="color: ${item.isImportant ? 'red' : ''}" class="todo__item-title">${item.title}</span>
+                <span style="color: ${item.isImportant ? 'red' : ''};text-decoration: ${item.isDone ? 'line-through' : ''}" class="todo__item-title">${item.title}</span>
                 <div class="todo__item-buttons">
                     <button class="todo__item-button done">Done</button>
                     <button class="todo__item-button important">Important</button>
@@ -34,6 +34,7 @@ const showList = () => {
             </li>`
     });
     todoBtnDelete = document.querySelectorAll('.delete');
+    let todoDone = document.querySelectorAll('.done');
     let todoImportant = document.querySelectorAll('.important');
 
     todoBtnDelete.forEach((item, idx) => {
@@ -59,11 +60,28 @@ const showList = () => {
         })
 
     })
+    todoDone.forEach((item, idx) => {
+        item.addEventListener('click', (evt) => {
+            todoList = todoList.map((el, index) => {
+                if (index === idx) {
+                    return {...el, isDone: !el.isDone}
+                }
+                return el
+            })
+            list.innerHTML = ''
+            showList();
+        })
+
+    })
+
+    spanTodoCount.textContent = todoList.length;
+    emptyList.style.display = todoList.length ? 'none' : 'block';
+
 }
 form.addEventListener('submit', (evt) => {
     evt.preventDefault();
     todoList = [...todoList, {
-        id: todoList[todoList.length - 1].id + 1,
+        id: todoList.length ? todoList[todoList.length - 1].id + 1 : 1,
         title: evt.target[0].value,
         isDone: false,
         isImportant: false,
@@ -72,5 +90,9 @@ form.addEventListener('submit', (evt) => {
     list.innerHTML = ''
     showList()
 });
+
+let spanTodoCount = document.querySelector('.todo_count-num');
+let emptyList = document.querySelector('.todo__empty');
+
 
 showList()
