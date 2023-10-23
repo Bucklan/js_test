@@ -14,43 +14,52 @@ let todoList = [
     {
         id: 3,
         title: 'name task 3',
-        isDone: true,
-        isImportant: false,
+        isDone: false,
+        isImportant: true,
     },
-];
+]; //object
 
-let list = document.querySelector('.todo__list');
-let form = document.querySelector('.todo__form');
-let todoBtnDelete;
-const showList = () => {
-    todoList.forEach((item, idx) => {
+let list = document.querySelector('.todo__list'); // tag ul for list
+let form = document.querySelector('.todo__form'); // form for add task
+
+const showList = (status = 'all') => { //main function - doing add elements to list
+    todoList.filter((item) => {
+        if (status === 'done') {
+            return item.isDone
+        } else if (status === 'important') {
+            return item.isImportant
+        } else {
+            return item
+        }
+    }).forEach((item) => { // foreach for gets list
+        //for add to our tag ul - our tasks
         list.innerHTML += `<li class="todo__item">
                 <span style="color: ${item.isImportant ? 'red' : ''};text-decoration: ${item.isDone ? 'line-through' : ''}" class="todo__item-title">${item.title}</span>
                 <div class="todo__item-buttons">
-                    <button class="todo__item-button done">Done</button>
-                    <button class="todo__item-button important">Important</button>
-                    <button class="todo__item-button delete">Delete</button>
+                    <button class="todo__item-button done"  data-id="${item.id}">Done</button>
+                    <button class="todo__item-button important" data-id="${item.id}">Important</button>
+                    <button class="todo__item-button delete" data-id="${item.id}">Delete</button>
                 </div>
             </li>`
     });
-    todoBtnDelete = document.querySelectorAll('.delete');
+    let todoBtnDelete = document.querySelectorAll('.delete'); //
     let todoDone = document.querySelectorAll('.done');
     let todoImportant = document.querySelectorAll('.important');
 
-    todoBtnDelete.forEach((item, idx) => {
-        item.addEventListener('click', (evt) => {
-            todoList = todoList.filter((el, index) => {
-                return index !== idx
+    todoBtnDelete.forEach((item) => {
+        item.addEventListener('click', () => {
+            todoList = todoList.filter((el) => {
+                return item.dataset.id !== el.id
             });
             list.innerHTML = ''
             showList()
         });
     });
 
-    todoImportant.forEach((item, idx) => {
-        item.addEventListener('click', (evt) => {
-            todoList = todoList.map((el, index) => {
-                if (index === idx) {
+    todoImportant.forEach((item) => {
+        item.addEventListener('click', () => {
+            todoList = todoList.map((el) => {
+                if (item.dataset.id === el.id) {
                     return {...el, isImportant: !el.isImportant}
                 }
                 return el
@@ -60,10 +69,10 @@ const showList = () => {
         })
 
     })
-    todoDone.forEach((item, idx) => {
-        item.addEventListener('click', (evt) => {
-            todoList = todoList.map((el, index) => {
-                if (index === idx) {
+    todoDone.forEach((item) => {
+        item.addEventListener('click', () => {
+            todoList = todoList.map((el) => {
+                if (item.dataset.id === el.id) {
                     return {...el, isDone: !el.isDone}
                 }
                 return el
@@ -94,5 +103,25 @@ form.addEventListener('submit', (evt) => {
 let spanTodoCount = document.querySelector('.todo_count-num');
 let emptyList = document.querySelector('.todo__empty');
 
+
+let all = document.querySelector('.all')
+let done = document.querySelector('.done')
+let important = document.querySelector('.important')
+
+
+all.addEventListener('click', () => {
+    list.innerHTML = ''
+    showList()
+
+});
+done.addEventListener('click', () => {
+    list.innerHTML = ''
+    showList('done')
+
+});
+important.addEventListener('click', () => {
+    list.innerHTML = ''
+    showList('important')
+});
 
 showList()
