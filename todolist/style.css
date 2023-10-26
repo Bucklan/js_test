@@ -17,6 +17,13 @@
     border-radius: 10px;
     padding: 20px;
     width: 500px;
+    background: #00000050;
+    color: white;
+}
+
+.todo__input{
+    background: #00000050;
+    color: #fff;
 }
 
 .todo__title {
@@ -37,16 +44,20 @@
     border: none;
     padding-left: 10px;
 }
-
-.todo__form .todo__button{
+.status__button,
+.add{
     width: 30%;
     height: 40px;
-    background-color: black;
+    background-color: #00000050;
     color: white;
-    border: none;
     border-radius: 5px;
     letter-spacing: 1px;
     cursor: pointer;
+}
+
+.status__button:hover,
+.add:hover{
+    border: 2px solid #fff;
 }
 .todo__list{
     display: flex;
@@ -54,7 +65,10 @@
     row-gap: 10px;
     padding: 20px 0;
 }
-
+.todo_status{
+    padding: 5px 0 2px;
+    margin-left: 5px;
+}
 .todo__empty{
     padding: 20px 0;
     text-align: center;
@@ -82,3 +96,16 @@
     border: none;
     border-radius: 5px;
 }
+
+.todo__item-button{
+    padding:10px ;
+    background-color: #00000050;
+    color: white;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+.todo__item-button:hover{
+    border: 2px solid #fff
+}
+

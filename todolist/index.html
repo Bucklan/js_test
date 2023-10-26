@@ -9,10 +9,14 @@
 </head>
 <body>
 
-<section class="todo">
+<section class="todo" id="vanta">
     <div class="todo__content">
-        <label  for="todo__input" class="todo__title">TodoList</label>
+        <h2  class="todo__title">TodoList</h2>
+
+        <h3 class="todo_status">Status: <span class="todo__status">All</span></h3>
+
         <form class="todo__form">
+            <label for="todo__input"></label>
             <input id="todo__input" placeholder="insert todo" type="text" class="todo__input" required maxlength="20" minlength="5" >
             <button class="todo__button add">ADD</button>
         </form>
@@ -36,14 +40,28 @@
                 Todo Count: <span class="todo_count-num"></span>
             </p>
             <div class="todo__footer-buttons">
-                <button style="background-color: purple " class="status__button status__all">All</button>
-                <button style="background-color: gold" class="status__button status__important">Important</button>
-                <button style="background-color: green" class="status__button status__done">Done</button>
+                <button  class="status__button status__all">All</button>
+                <button class="status__button status__important">Important</button>
+                <button class="status__button status__done">Done</button>
+                <button class="status__button status__delete_all">Delete All</button>
             </div>
         </div>
     </div>
 </section>
-
 </body>
+<script src="../three.r134.min.js"></script>
+<script src="../vanta.birds.min.js"></script>
+<script>
+    VANTA.BIRDS({
+        el: "#vanta",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00
+    })
+</script>
 <script src="main.js"></script>
 </html>

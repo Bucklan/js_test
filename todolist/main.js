@@ -29,7 +29,7 @@ const showList = (status = 'all') => { //main function - doing add elements to l
         }
         if (status === 'done') {
             return item.isDone
-        }else {
+        } else {
             return item
         }
     }).forEach((item) => { // foreach for gets list
@@ -108,19 +108,29 @@ let emptyList = document.querySelector('.todo__empty');
 let all = document.querySelector('.status__all')
 let done = document.querySelector('.status__done')
 let important = document.querySelector('.status__important')
+let todoStatus = document.querySelector('.todo__status')
+let deleteAllButton = document.querySelector('.status__delete_all');
 
+deleteAllButton.addEventListener('click', () => {
+    list.innerHTML = '';
+    todoList = [];
+    showList();
+})
 
 all.addEventListener('click', () => {
+    todoStatus.textContent = 'All'
     list.innerHTML = ''
     showList()
 
 });
 done.addEventListener('click', () => {
+    todoStatus.textContent = 'Done'
     list.innerHTML = ''
     showList('done')
 
 });
 important.addEventListener('click', () => {
+    todoStatus.textContent = 'Important'
     list.innerHTML = ''
     showList('important')
 });
