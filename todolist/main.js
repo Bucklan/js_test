@@ -106,7 +106,7 @@ let emptyList = document.querySelector('.todo__empty');
 
 
 let all = document.querySelector('.status__all')
-let done = document.querySelector('.status__important')
+let done = document.querySelector('.status__done')
 let important = document.querySelector('.status__important')
 
 
