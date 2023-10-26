@@ -24,11 +24,12 @@ let form = document.querySelector('.todo__form'); // form for add task
 
 const showList = (status = 'all') => { //main function - doing add elements to list
     todoList.filter((item) => {
+        if (status === 'important') {
+            return item.isImportant
+        }
         if (status === 'done') {
             return item.isDone
-        } else if (status === 'important') {
-            return item.isImportant
-        } else {
+        }else {
             return item
         }
     }).forEach((item) => { // foreach for gets list
@@ -49,7 +50,7 @@ const showList = (status = 'all') => { //main function - doing add elements to l
     todoBtnDelete.forEach((item) => {
         item.addEventListener('click', () => {
             todoList = todoList.filter((el) => {
-                return item.dataset.id !== el.id
+                return item.dataset.id != el.id
             });
             list.innerHTML = ''
             showList()
@@ -59,7 +60,7 @@ const showList = (status = 'all') => { //main function - doing add elements to l
     todoImportant.forEach((item) => {
         item.addEventListener('click', () => {
             todoList = todoList.map((el) => {
-                if (item.dataset.id === el.id) {
+                if (item.dataset.id == el.id) {
                     return {...el, isImportant: !el.isImportant}
                 }
                 return el
@@ -72,7 +73,7 @@ const showList = (status = 'all') => { //main function - doing add elements to l
     todoDone.forEach((item) => {
         item.addEventListener('click', () => {
             todoList = todoList.map((el) => {
-                if (item.dataset.id === el.id) {
+                if (item.dataset.id == el.id) {
                     return {...el, isDone: !el.isDone}
                 }
                 return el
@@ -104,9 +105,9 @@ let spanTodoCount = document.querySelector('.todo_count-num');
 let emptyList = document.querySelector('.todo__empty');
 
 
-let all = document.querySelector('.all')
-let done = document.querySelector('.done')
-let important = document.querySelector('.important')
+let all = document.querySelector('.status__all')
+let done = document.querySelector('.status__important')
+let important = document.querySelector('.status__important')
 
 
 all.addEventListener('click', () => {
